@@ -25,7 +25,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         UserDetails user = userDetailsService.loadUserByUsername(username);
 
         if (!user.getPassword().equals("{noop}" + password)) {
-            throw new BadCredentialsException("Bad credentials");
+            throw new BadCredentialsException("Credentials invalid");
         }
 
         return new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());

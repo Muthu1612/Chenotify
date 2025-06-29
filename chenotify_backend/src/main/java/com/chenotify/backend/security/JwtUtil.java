@@ -1,18 +1,20 @@
 package com.chenotify.backend.security;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
+import java.security.Key;
+import java.util.Date;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
-import java.util.Date;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
 
-    private final String SECRET = "replace-this-with-a-very-strong-secret-key"; // ideally from application.properties
+    private final String SECRET = "something"; // ideally from application.properties
     private final long EXPIRATION = 1000 * 60 * 60 * 10; // 10 hours
 
     private Key getSignKey() {
